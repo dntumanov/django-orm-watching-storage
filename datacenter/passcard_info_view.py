@@ -7,10 +7,10 @@ from django.shortcuts import render
 
 def passcard_info_view(request, passcode):
     """Возвращает информацию о пропуске"""
-    passcard: List[Passcard] = Passcard.objects.get(passcode=passcode)
-    visit_passcard_list: List[Visit] = Visit.objects.filter(passcard=passcard)
+    passcard = Passcard.objects.get(passcode=passcode)
+    visit_passcard_list = Visit.objects.filter(passcard=passcard)
 
-    this_passcard_visits: List[dict] = []
+    this_passcard_visits = []
 
     for passcard_visit in visit_passcard_list:
         passcard_visit_dict = {}

@@ -6,7 +6,7 @@ from django.shortcuts import render
 
 def active_passcards_view(request):
     """Возвращает активные пропуска"""
-    active_passcards: List[Passcard] = Passcard.objects.filter(is_active=True)
+    active_passcards = Passcard.objects.filter(is_active=True)
     context = {
         "active_passcards": active_passcards,
     }
