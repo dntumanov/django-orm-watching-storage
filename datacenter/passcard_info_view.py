@@ -16,7 +16,7 @@ def passcard_info_view(request, passcode):
         passcard_visit_dict = {}
         visit = Visit()
         duration = visit.get_duration(passcard_visit.entered_at, passcard_visit.leaved_at)
-        is_strange_visit = visit.get_visit_long(duration)
+        is_strange_visit = visit.is_visit_long(duration)
         passcard_visit_dict.update(
             entered_at=passcard_visit.entered_at,
             duration=visit.get_format_duration(duration),

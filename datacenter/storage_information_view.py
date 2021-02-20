@@ -10,7 +10,7 @@ def storage_information_view(request):
         duration_dict = {}
         visit = Visit()
         duration = visit.get_duration(visitor.entered_at, visitor.leaved_at)
-        is_strange_visit = visit.get_visit_long(duration)
+        is_strange_visit = visit.is_visit_long(duration)
         duration_dict.update(
             who_entered=visitor.passcard.owner_name,
             entered_at=visitor.entered_at,
