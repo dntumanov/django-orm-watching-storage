@@ -37,10 +37,10 @@
                     {% for visit in non_closed_visits %}
                     <tr>
                         <td class="table-element">{{ forloop.counter }}</td>
-                        <td class="table-element">{{ visit.who_entered }}</td>
+                        <td class="table-element">{{ visit.passcard }}</td>
                             <td class="table-element"><strong>{{ visit.entered_at }}</strong></td>
-                        <td class="table-element">{{ visit.duration }}</td>
-                        <td class="table-element">{{ visit.is_strange }}</td>
+                        <td class="table-element">{{ visit.get_format_duration }}</td>
+                        <td class="table-element">{% if visit.is_visit_long %}Да{% else %}Нет{% endif %}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
