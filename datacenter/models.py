@@ -29,26 +29,23 @@ class Visit(models.Model):
         """Возвращает текущее местное время"""
         return timezone.localtime(current_time)
 
-    def get_format_duration(self, duration_time):
+    def get_format_duration(self):
         """Возвращает время в формате HH:MM"""
-        return str(duration_time)[0:7]
+        return str(self.get_duration())[0:7]
 
-    def is_visit_long(self, duration):
-        """Проверяет визит в хранилище на подозрительность"""
-        return duration.total_seconds() > Visit.TIME_IN_SECOND
-
-    def get_duration(self, entered_at, leaved_at):
+    def get_duration(self):
         """Возвращает продолжительность нахождения"""
-        # TODO: Убрать print
-        print(self.entered_at, self.leaved_at)
-
-        entered_at_time = self.get_local_time(entered_at)
+        entered_at_time = self.get_local_time(self.entered_at)
         time_now = self.get_local_time(timezone.now())
         duration = time_now - entered_at_time
-        if leaved_at:
-            leaved_at_time = self.get_local_time(leaved_at)
+        if self.leaved_at:
+            leaved_at_time = self.get_local_time(self.leaved_at)
             duration = leaved_at_time - entered_at_time
         return duration
+
+    def is_visit_long(self):
+        """Проверяет визит в хранилище на подозрительность"""
+        return self.get_duration().total_seconds() > Visit.TIME_IN_SECOND
 
     def __str__(self):
         return "{user} entered at {entered} {leaved}".format(

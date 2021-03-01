@@ -10,22 +10,8 @@ def passcard_info_view(request, passcode):
     passcard = Passcard.objects.get(passcode=passcode)
     visit_passcard_list = Visit.objects.filter(passcard=passcard)
 
-    this_passcard_visits = []
-
-    for passcard_visit in visit_passcard_list:
-        passcard_visit_dict = {}
-        visit = Visit()
-        duration = visit.get_duration(passcard_visit.entered_at, passcard_visit.leaved_at)
-        is_strange_visit = visit.is_visit_long(duration)
-        passcard_visit_dict.update(
-            entered_at=passcard_visit.entered_at,
-            duration=visit.get_format_duration(duration),
-            is_strange=is_strange_visit
-        )
-        this_passcard_visits.append(passcard_visit_dict)
-
     context = {
         "passcard": passcard,
-        "this_passcard_visits": this_passcard_visits
+        "this_passcard_visits": visit_passcard_list
     }
     return render(request, 'passcard_info.html', context)

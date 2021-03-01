@@ -37,8 +37,8 @@
                     <tr>
                         <td class="table-element">{{ forloop.counter }}</td>
                             <td class="table-element"><strong>{{ visit.entered_at }}</strong></td>
-                        <td class="table-element">{{ visit.duration }}</td>
-                        <td class="table-element">{% if visit.is_strange %}Да{% else %}Нет{% endif %}</td>
+                        <td class="table-element">{{ visit.get_format_duration }}</td>
+                        <td class="table-element">{% if visit.is_visit_long %}Да{% else %}Нет{% endif %}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
