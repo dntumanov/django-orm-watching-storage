@@ -1,14 +1,24 @@
 ## django-orm-watching-storage
 
 ### Описание 
-Проект по уроку №1 курса на [@dvmn.org](https://dvmn.org/modules/django-orm/)
+Проект к курсу [Знакомство с Django: ORM ](https://dvmn.org/modules/django-orm/)
 ### Установка
 1. Склонировать репозиторий
-2. Создать виртуальное окружение. Версия Python >= 3.7
+2. Создать виртуальное окружение. Версия Python >= 3.7. В проекте использовался Python 3.9.1. Файл .python-version, если устанавливаете через pyenv
 3. Установить все зависимости: `pip install -r requirements.txt`  
-4. Файл .env.example переименовать в .env и добавить вместо `''` свои значения. Файл лежит в `project/`
+4. Чтобы подключить интерфейс к базе данных, создайте файл .env и добавьте в него соотвествующие поля настроек доступа. Файл лежит в `project/`
+```shell script
+DB_HOST='put_here_your_database_host'
+DB_PORT='put_here_your_db_port'
+DB_NAME='put_here_db_nam'
+DB_USER='put_here_db_user_name'
+DB_PASSWORD='put_here_your_password'
+SECRET_KEY='put_here_your_secret_key'
+DEBUG='put_here_True_or_False'
+```
+> Для включения режима отладки поместите строку DEBUG=True в файл .env
 
 ### Запуск приложения
 ```python
-python main.py 
+python manage.py runserver 0.0.0.0:8000
 ``` 
