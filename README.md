@@ -1,7 +1,7 @@
 ## django-orm-watching-storage
 
 ### Описание 
-Проект к курсу [Знакомство с Django: ORM ](https://dvmn.org/modules/django-orm/)
+Проект к курсу [Знакомство с Django: ORM ](https://dvmn.org/modules/django-orm/) 1 и 2 уроки
 ### Установка
 1. Склонировать репозиторий
 2. Создать виртуальное окружение. Версия Python >= 3.7. В проекте использовался Python 3.9.1. Файл .python-version, если устанавливаете через pyenv
